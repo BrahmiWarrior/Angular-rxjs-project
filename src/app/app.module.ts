@@ -9,6 +9,8 @@ import { DeclarativePostsComponent } from './pages/declarative-posts/declarative
 import { HomeComponent } from './pages/home/home.component';
 import { AltPostsComponent } from './pages/alt-posts/alt-posts.component';
 import { SinglePostComponent } from './components/single-post/single-post.component';
+import { AddPostComponent } from './components/add-post/add-post.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,12 +20,14 @@ import { SinglePostComponent } from './components/single-post/single-post.compon
     DeclarativePostsComponent,
     HomeComponent,
     AltPostsComponent,
-    SinglePostComponent
+    SinglePostComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-  HttpClientModule
+    HttpClientModule,
+  ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

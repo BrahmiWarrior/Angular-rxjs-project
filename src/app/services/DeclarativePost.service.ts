@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, share, shareReplay } from 'rxjs/operators';
 import { IPost } from '../models/IPost';
-import { Subject, combineLatest, throwError } from 'rxjs';
+import { BehaviorSubject, Subject, combineLatest, throwError } from 'rxjs';
 
 import { DeclarativeCategoryService } from './DeclarativeCatergory.service';
 
@@ -25,7 +25,7 @@ export class DeclarativePostService {
         }
         return postsData;
       }),
-      catchError(this.handleError)
+      catchError(this.handleError),shareReplay(1) // adding sharereply to cache the observable reduce the number of https calls and make better performance
     );
 
   // here im comnbining the both observers posts and catergories with combine lastest
@@ -42,7 +42,7 @@ export class DeclarativePostService {
           )?.title,
         } as IPost;
       });
-    }),catchError(this.handleError)
+    }),shareReplay(1),catchError(this.handleError)
   );
 
   private selectedPostSubject = new Subject<string>();
@@ -52,6 +52,7 @@ export class DeclarativePostService {
     this.selectedPostSubject.next(postid)
   }
 
+
   post$ = combineLatest([this.postWithCategory$, this.selectedPostAction$]).pipe(
     map(([posts, selectedPostId]) => {
       return posts.find(post=>post.id===selectedPostId)
@@ -59,6 +60,9 @@ export class DeclarativePostService {
 
 
     ));
+
+
+
 
   handleError(error: Error) {
     return throwError(() => {
