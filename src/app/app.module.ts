@@ -7,6 +7,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { PostsComponent } from './pages/posts/posts.component';
 import { DeclarativePostsComponent } from './pages/declarative-posts/declarative-posts.component';
 import { HomeComponent } from './pages/home/home.component';
+import { AltPostsComponent } from './pages/alt-posts/alt-posts.component';
+import { SinglePostComponent } from './components/single-post/single-post.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { HomeComponent } from './pages/home/home.component';
     HeaderComponent,
     PostsComponent,
     DeclarativePostsComponent,
-    HomeComponent
+    HomeComponent,
+    AltPostsComponent,
+    SinglePostComponent
   ],
   imports: [
     BrowserModule,

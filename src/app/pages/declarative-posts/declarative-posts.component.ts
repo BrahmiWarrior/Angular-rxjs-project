@@ -36,4 +36,5 @@ export class DeclarativePostsComponent {
     let selectedCategoryId = (event.target as HTMLSelectElement).value;
     this.selectedCategorySubject.next(selectedCategoryId);
   }
+
 }
