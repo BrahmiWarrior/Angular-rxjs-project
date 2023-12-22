@@ -1,0 +1,24 @@
+<div>
+  <form>
+    <div class="my-2">
+      <label for="">Title</label>
+      <input type="text" class="form-control" />
+    </div>
+    <div class="my-2">
+      <label for="">Description</label>
+      <textarea class="form-control"></textarea>
+    </div>
+    <div class="my-2">
+      <label for="">Category</label>
+      <select class="form-select">
+        <option value="">SelectCategory</option>
+<option [value]="category.id" *ngFor="let category of category$ | async">{{category.title}}</option>
+      </select>
+    </div>
+
+
+<div class="my-2">
+<button type="submit" class="btn btn-warning">Update Post</button>
+</div>
+  </form>
+</div>
